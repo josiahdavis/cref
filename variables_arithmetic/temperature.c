@@ -11,10 +11,12 @@ int main()
     upper = 300;
     step = 20;
     fahr = lower;
+    printf("%3s \t %6s\n", "C", "F");
+    printf("----------------\n");
     while (fahr <= upper)
     {
         celsius = 5 * (fahr - 32) / 9;
-        printf("%f \t %f \n", fahr, celsius);
+        printf("%3.0f \t %6.1f \n", fahr, celsius);
         fahr = fahr + step;
     }
 }
