@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void swap_wrong(int x, int y){
     int temp;
@@ -13,6 +15,7 @@ void swap_correct(int *px, int *py){
     *px = *py;
     *py = temp;
 }
+
 
 int main()
 {
@@ -119,18 +122,58 @@ int main()
     printf("a_count=%d, b_count=%d, c_count=%d\n", a_count, b_count, c_count);
 
     /* --------------
-    -- Pointers    --
+    -- Functions  --
+    ---------------- */
+
+    // -- printf() --
+    // the printf() function is defined in the stdio.h header file
+    printf("Hello world");
+
+    // -- sizeof() -- 
+    // the sizeof() function is defined in the stdlib.h header file
+    printf("The size of a float is %lu bytes \n", sizeof(my_float));
+    printf("The size of a int is   %lu bytes\n", sizeof(my_int));
+    printf("The size of a char is  %lu bytes\n", sizeof(my_char));
+
+    // You can use sizeof to find the length of an array
+    int array_1d[] = {1, 2, 3, 4, 5, 6};
+    printf("My array has length = %lu\n", sizeof(array_1d)/sizeof(array_1d[0]));
+
+    // -- rand() --
+    // the rand() function is defined in the stdlib.h header file
+    // generates random numbers in the range 0 to RAND_MAX
+    printf("Here is a random number: %.3f\n", (double)rand());
+    printf("Here is a random number: %.3f\n", (double)rand()/(double)RAND_MAX);
+
+    // -- strcpy() --
+    // The strcpy() function is defined in the string.h header file.
+    char first_name[10];
+    // the statement `first_name = "Julius";` would give an error: array type 'char[10]' is not assignable
+    strcpy(first_name, "Julius");
+    printf("first_name=%s\n", first_name);
+
+    /* --------------
+    -- Pointers  --
     ---------------- */
 
     // Pointer basics
-    // * is the indirection operator, & is the unary operator
+    // Holds the memory address of another variable
+    // * is the indirection operator (used to declare a point as well as to get the value at address), 
+    // & is the unary operator (to get the address of)
 
     int x = 1, y = 2, z[10];
     int *ip;    // Declaring the pointer, it has a type, it can only point to integers now.
-    ip = &x;    // &x is a pointer to x, so we say ip points to x
+    ip = &x;    // ip points to x (&x is a pointer to x)
     y = *ip;    // *ip gets the value of the thing ip is pointing to, in this case 1, so y is now 1.
     *ip = 0;    // x is now 0;
     ip = &z[0]; // ip is now pointing to z[0]
+
+    int age = 21;
+    int *pAge = &age;
+    printf("address of age is %p\n", &age); // %p specifier to display address in hexidecimal
+    printf("value of pAge is %p\n", pAge);
+    printf("value of age is %d\n", age);
+    printf("value at stored address is %d\n", *pAge); // dereferencing
 
     // Pointers and function arguments
     // Enable a function to access and change objects *within* the function that called it
@@ -154,4 +197,5 @@ int main()
     printf(" *pa     points to %d\n", *pa);
     printf(" *(pa+1) points to %d\n", *(pa+1));
     printf(" *(pa+2) points to %d\n", *(pa+2));
+
 }
