@@ -198,4 +198,67 @@ int main()
     printf(" *(pa+1) points to %d\n", *(pa+1));
     printf(" *(pa+2) points to %d\n", *(pa+2));
 
+    /* --------------
+    -- Structures  --
+    ---------------- */
+
+    // Struct
+    // a list of declarations enclosed in brace
+    // 'point' is an optinal structure tag
+    struct point {
+        int x; // x and y are members of the structure
+        int y;
+    };
+
+    // Initialize a structure using a list
+    struct point pt1 = { 52, 13 };
+    struct point pt2 = { 55, 9 };
+
+    // Access members of the structure using a '.' operator
+    printf("Getting points from my struct: %d,%d \n", pt1.x, pt1.y);
+
+    // Pointers to structures are common
+    // If you have a large structure and passing to a function, better to pass a pointer
+    struct point origin = {11, 33}; // origin is an object of type "struct point"
+    struct point *pp;    // pp is a pointer to a structure of type "struct point"
+
+    pp = &origin; // pp is a pointer to origin
+
+    // Access members of a struct from the pointer
+    printf("origin is (%d,%d)\n", (*pp).x, (*pp).y);
+
+    // (functionally equivalent)
+    // Use "my-pointer->member-of-structure" notation for a cleaner syntax
+    printf("origin is (%d,%d)\n", pp->x, pp->y);
+
+    // Typedef
+    // to create a "nickname" for an existing datatype
+    typedef char user[25]; // A character array of 25 bytes will now be known as a "user"
+
+    // Now if we need a character array of 25 bytes, I can just do this
+    user user1 = "Jack";
+    user user2 = "Jill";
+
+    // What I would do otherwise
+    char user3[25] = "Jack";
+    char user4[25] = "Jill";
+
+    // Typedef is commonly used with structures
+    // Don't need the tag name, but will use the "nickname"
+    typedef struct {
+        char name[25];
+        char password[12];
+        int id;
+    } User;
+
+    User user5 = {"Jack", "pwd456", 12345}; // struct keyword is not needed anymore.
+    User user6 = {"Jill", "pwd912", 19234}; 
+
+    // We can use typedef and struct together (common practice)
+    typedef struct {
+        int input_dim;
+        int output_dim;
+    } Config;
+
+    Config my_config = {1024, 512};
 }
