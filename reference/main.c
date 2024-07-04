@@ -124,7 +124,7 @@ int main()
     /* --------------
     -- Functions  --
     ---------------- */
-
+    printf("\nFunctions\n-------------\n");
     // -- printf() --
     // the printf() function is defined in the stdio.h header file
     printf("Hello world");
@@ -155,7 +155,7 @@ int main()
     /* --------------
     -- Pointers  --
     ---------------- */
-
+    printf("\nPointers\n-------------\n");
     // Pointer basics
     // Holds the memory address of another variable
     // * is the indirection operator (used to declare a point as well as to get the value at address), 
@@ -201,7 +201,7 @@ int main()
     /* --------------
     -- Structures  --
     ---------------- */
-
+    printf("\nStructures\n-------------\n");
     // Struct
     // a list of declarations enclosed in brace
     // 'point' is an optinal structure tag
