@@ -29,6 +29,10 @@ int main()
     int my_int = 143;
     printf("Integer:         %8d (use %%d to print)\n", my_int);
 
+    // Long Integer
+    long my_long = 143;
+    printf("Long:           %8li (use %%li to print)\n", my_long);
+
     // Floating Point
     float my_float = 143.142;
     printf("Floating Point:  %3.4f (use %%f to print)\n", my_float);
@@ -58,9 +62,37 @@ int main()
     printf("Boolean data type does not exist\n");
 
     /* --------------
+    -- Arithmatic --
+    ---------------- */
+    printf("\nArithmatic\n-------------\n");
+
+    // If you divide two integers the result will also be an integer, rounded down
+    int my_int1 = 3;
+    int my_int2 = 2;
+    printf("13 / 7  = %i\n", 13 / 7);
+    printf("3 / 2   = %i\n", my_int1/my_int2);
+
+    // However, I can cast them as floats to get back a float
+    printf("3.0/2.0 = %f\n", (float)my_int1/(float)my_int2);
+
+    // If I divide a int and a float I get a float
+    printf("3.0 / 2 = %f\n", (float)my_int1/my_int2);
+    printf("3 / 2.0 = %f\n", my_int1/(float)my_int2);
+
+    // If I add an int and a float I get a float.
+    printf("3.0 + 2 = %f\n", (float)my_int1 + my_int2);
+
+    // If I define an int but then set it equal to the result of a float and an int 
+    // I get an int
+    int my_int3;
+    my_int3 = 1.5 + 2;
+    printf("1.5 + 2 = %i\n", my_int3);
+
+
+    /* --------------
     -- Control Flow --
     ---------------- */
-    printf("\nControl Flow\n-------------\n");
+    printf("\n\nControl Flow\n-------------\n");
 
     int a = 10;
     int b = 10;
@@ -127,7 +159,7 @@ int main()
     printf("\nFunctions\n-------------\n");
     // -- printf() --
     // the printf() function is defined in the stdio.h header file
-    printf("Hello world");
+    printf("Hello world\n");
 
     // -- sizeof() -- 
     // the sizeof() function is defined in the stdlib.h header file
@@ -152,6 +184,15 @@ int main()
     strcpy(first_name, "Julius");
     printf("first_name=%s\n", first_name);
 
+    // -- strcmp() --
+    // The strcmp() function is defined in the string.h header file.
+    char name1[6], name2[6], name3[6]; 
+    strcpy(name1, "James");
+    strcpy(name2, "James");
+    strcpy(name3, "John");
+    printf("String compare 1-2 =%d\n", strcmp(name1, name2));
+    printf("String compare 2-3 =%d\n", strcmp(name2, name3));
+
     /* --------------
     -- Pointers  --
     ---------------- */
@@ -174,6 +215,10 @@ int main()
     printf("value of pAge is %p\n", pAge);
     printf("value of age is %d\n", age);
     printf("value at stored address is %d\n", *pAge); // dereferencing
+
+    // Creating a string
+    char *s = "HI!!";
+    printf("%s I am a pointer\n", s);
 
     // Pointers and function arguments
     // Enable a function to access and change objects *within* the function that called it
