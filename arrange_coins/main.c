@@ -17,6 +17,10 @@ Translation: coins needed to achieve a specified number of rows:
     coins_needed = (rows + 1) * (rows / 2)
 
 Solve using binary search: Number of possible rows is bounded by 1 and number of coins available n.
+
+Ref: 
+    * Arranging Coins - Leetcode 441 https://leetcode.com/problems/arranging-coins/
+    * Neatcode's solution: https://www.youtube.com/watch?v=5rHz_6s2Buw
 */
 
 int max(int a, int b)

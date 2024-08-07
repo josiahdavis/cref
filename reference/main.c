@@ -31,7 +31,7 @@ int main()
 
     // Long Integer
     long my_long = 143;
-    printf("Long:           %8li (use %%li to print)\n", my_long);
+    printf("Long:          %8li (use %%li to print)\n", my_long);
 
     // Floating Point
     float my_float = 143.142;
