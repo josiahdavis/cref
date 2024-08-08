@@ -17,6 +17,11 @@ void swap_correct(int *px, int *py){
 }
 
 
+int max(int a, int b)
+{
+    return a > b ? a : b;
+}
+
 int main()
 {
 
@@ -192,6 +197,10 @@ int main()
     strcpy(name3, "John");
     printf("String compare 1-2 =%d\n", strcmp(name1, name2));
     printf("String compare 2-3 =%d\n", strcmp(name2, name3));
+
+    // Definig your own functions (see max outside of main)
+    printf("User defined function: int max(int a, int b)");
+    printf("max(10, 1000)=%i\n", max(10, 1000));
 
     /* --------------
     -- Pointers  --
