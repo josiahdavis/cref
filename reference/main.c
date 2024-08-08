@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+int max(int a, int b)
+{
+    return a > b ? a : b;
+}
+
 void swap_wrong(int x, int y){
     int temp;
     temp = x;
@@ -14,12 +19,6 @@ void swap_correct(int *px, int *py){
     temp = *px;
     *px = *py;
     *py = temp;
-}
-
-
-int max(int a, int b)
-{
-    return a > b ? a : b;
 }
 
 int main()
