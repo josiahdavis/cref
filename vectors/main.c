@@ -3,7 +3,7 @@
 #include <time.h>
 #include <assert.h>
 
-// Modified from Frank Hmeidan's: 
+// Modified from Umang Kaushik's: 
 // https://github.com/ubermenchh/Flash/blob/main/flash.c
 
 
