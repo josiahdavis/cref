@@ -23,27 +23,22 @@ Ref:
     * Neatcode's solution: https://www.youtube.com/watch?v=5rHz_6s2Buw
 */
 
-int max(int a, int b)
-{
-    return a > b ? a : b;
-}
-
 int arrangeCoins(int n) {
     // n = coins available to build our staircase
-    long left = 1;
-    long right = n;
-    long res = 0;
-    long mid;
+    int left = 1;
+    int right = n;
+    int res = 0;
+    int mid;
     double coins_needed;
 
     while (left <= right) {
 
         // find midpoint (keep as integers to round down)
-        mid = (left + right)/2;
+        mid = left + (right - left)/2;
 
         // calculate how many coins we need for "mid" number of complete rows using gauss formula
         coins_needed = ((double)mid / 2) * (mid + 1);
-        printf("left=%-10lu right=%-10lu -> mid=%-10lu -> needed=%-25.0f", left, right, mid, coins_needed);
+        printf("left=%-10i right=%-10i -> mid=%-10i -> needed=%-25.0f", left, right, mid, coins_needed);
 
         // update range of possible values for next search
         if (coins_needed > n) {
@@ -54,11 +49,11 @@ int arrangeCoins(int n) {
             printf(" -> going right");
             // have enough coins, truncate out the left side and update our max rows tracker 
             left = mid + 1;
-            res = max(res, mid);
-            printf(" -> num stairs=%-7li\n", res);
+            res = mid; // don't need max, it will always be higher to the right
+            printf(" -> num stairs=%-7i\n", res);
         }
     }
-    printf("With %i total coins, you can create %lu complete rows\n", n, res);
+    printf("With %i total coins, you can create %i complete rows\n", n, res);
     return res;
 }
 
@@ -68,6 +63,7 @@ int main()
     arrangeCoins(5); // 2
     arrangeCoins(8); // 3
     arrangeCoins(100); // 13
+    arrangeCoins(2146467959); // 65519
     arrangeCoins(2146467960); // 65520
     return 0;
 }
