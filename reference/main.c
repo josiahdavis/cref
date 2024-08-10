@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int max(int a, int b)
 {
@@ -8,6 +9,7 @@ int max(int a, int b)
 }
 
 void swap_wrong(int x, int y){
+    // Passs by value/copy
     int temp;
     temp = x;
     x = y;
@@ -15,6 +17,7 @@ void swap_wrong(int x, int y){
 }
 
 void swap_correct(int *px, int *py){
+    // Pass by reference/pointer
     int temp;
     temp = *px;
     *px = *py;
@@ -189,13 +192,13 @@ int main()
     printf("first_name=%s\n", first_name);
 
     // -- strcmp() --
-    // The strcmp() function is defined in the string.h header file.
+    // The strcmp() function is defined in string.h.
     char name1[6], name2[6], name3[6]; 
     strcpy(name1, "James");
     strcpy(name2, "James");
     strcpy(name3, "John");
-    printf("String compare 1-2 =%d\n", strcmp(name1, name2));
-    printf("String compare 2-3 =%d\n", strcmp(name2, name3));
+    printf("String compare 1-2 =%d\n", strcmp(name1, name2)); // == 0 means two strings are the same
+    printf("String compare 2-3 =%d\n", strcmp(name2, name3)); // != 0 means they are different
 
     // Definig your own functions (see max outside of main)
     printf("User defined function: int max(int a, int b)");
@@ -314,4 +317,15 @@ int main()
     } Config;
 
     Config my_config = {1024, 512};
+
+    /* --------------
+    --  Memory     --
+    ---------------- */
+    printf("\nMemory\n-------------\n");
+
+    float *Wx = malloc(512 * sizeof(float));
+    Wx[0] = 0.7;
+    Wx[2] = -0.45;
+    printf("Wx=[%.3f, %.3f, %.3f, %.3f, ...]\n", Wx[0], Wx[1], Wx[2], Wx[3]);
+    free(Wx);
 }
