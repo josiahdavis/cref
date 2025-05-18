@@ -62,7 +62,7 @@ int main()
 
     // String
     char my_char_arr[] = "learning";
-    printf("Strings are character arrays\n");
+    printf("Strings are character arrays terminated with \0 \n");
     printf("Character Array: %8s (use %%s to print)\n", my_char_arr);
 
     // Boolean
@@ -328,4 +328,23 @@ int main()
     Wx[2] = -0.45;
     printf("Wx=[%.3f, %.3f, %.3f, %.3f, ...]\n", Wx[0], Wx[1], Wx[2], Wx[3]);
     free(Wx);
+
+
+    printf("\nData Structures\n-------------\n");
+    
+    // Queue and Stack are abstract data types, 
+    // can be implemented in many different ways.
+
+    const int CAPACITY = 50;
+    // Queue: Enqeue and deqeue, FIFO
+    typedef struct {
+        int people[CAPACITY];
+        int size;
+    } queue;
+
+    // Stack: Push and pop, LIFO
+    typedef struct {
+        int people[CAPACITY];
+        int size;
+    } stack;
 }

@@ -8,7 +8,6 @@ void init_unif(float *v, int size, float low, float high){
     for (int i = 0; i < size; i++){
         x = (float)rand() / (float)RAND_MAX;
         v[i] = x * (high - low) + low;
-        // v[i] = (float)(rand() % 10);
     }
 }
 
@@ -26,21 +25,6 @@ void print_as_matrix(float *vec, int row, int col, char * msg){
     printf("]]\n");
 }
 
-void softmax(float *v, float *v_out, int rows, int cols){
-    float *row_sums = malloc(rows * sizeof(float));
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < cols; j++){
-            row_sums[i] += v[i * cols + j];
-        }
-    }
-
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < cols; j++){
-            v_out[i * cols + j] = v[i * cols + j] / row_sums[i];
-        }
-    }
-}
-
 int main(void)
 {
 
@@ -48,19 +32,15 @@ int main(void)
 
     // Initialize
     int B = 6;
-    int C = 2;
-    float* W_in = malloc(B * C * sizeof(float));
-    float* W_out = malloc(B * C * sizeof(float));
+    int C = 8;
+    float* out = malloc(B * C * sizeof(float));
 
     // Calculate
-    init_unif(W_in, B * C, -5., 5.);
-    print_as_matrix(W_in, B, C, "Weights in");
-    softmax(W_in, W_out, B, C);
-    print_as_matrix(W_out, B, C, "Softmax");
+    init_unif(out, B * C, -5., 5.);
+    print_as_matrix(out, B, C, "Weights");
     printf("Complete.\n");
 
     // Clean up
-    free(W_in);
-    free(W_out);
+    free(out);
     return 0;
 }
