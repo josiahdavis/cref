@@ -318,6 +318,32 @@ int main()
 
     Config my_config = {1024, 512};
 
+    /* ---------------------
+    --  Typedef + Struct --
+    --------------------- */
+    
+    // Struct in C is way to group multiple data elements together under one name
+    // Typedef creates a nickname
+    // "Create a struct with these fields, and give it the name 'Linear' "
+    typedef struct {
+        float *W, *b;
+        int input_size, output_size;
+    } Linear;
+    
+    // Define FeedForward as a pointer to linear objects    
+    typedef struct {
+        Linear *layer;
+        int n_layers;
+    } FeedForward;
+
+    /*
+        // FeedForward consists of net.layer[0], net.layer[1], net.layer[2] 
+        FeedForward net;
+        net.n_layers = 3;
+        net.layer = (Linear*)malloc(3 * sizeof(Linear));
+    */
+
+    
     /* --------------
     --  Memory     --
     ---------------- */
